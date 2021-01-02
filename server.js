@@ -9,4 +9,26 @@ var http = require("http")
 
 var app = express()
 var PORT = process.env.PORT || 5000
-ap
+
+var server = http.createServer(app)
+var io = socketIo(server)
+
+
+
+app.use(cors())
+app.use(morgan('dev'))
+app.use(bodyParser.json())
+
+app.use('/', express.static(path.resolve(path.join(__dirname, 'public'))))
+
+
+io.on("connect", (user)=>{
+    console.log("user connected")
+})
+
+
+
+
+server.listen(3000, ()=>{
+    console.log("surver is running")
+})

@@ -1,34 +1,42 @@
-var express = require("express")
-var cors = require("cors")
-var path = require("path")
-var morgan = require("morgan")
-var bodyParser = require("body-parser")
-var socketIo = require("socket.io")
-var http = require("http")
-
+var express = require('express')
 
 var app = express()
-var PORT = process.env.PORT || 5000
-
-var server = http.createServer(app)
-var io = socketIo(server)
+var http = require('http').createServer(app)
+var io = require('socket.io')(http)
 
 
+var PORT = process.env.PORT || 3000
 
-app.use(cors())
-app.use(morgan('dev'))
-app.use(bodyParser.json())
-
-app.use('/', express.static(path.resolve(path.join(__dirname, 'public'))))
+app.use(express.static(__dirname + '/public'))
 
 
-io.on("connect", (user)=>{
-    console.log("user connected")
+app.get("/", (req, res, next)=>{
+    console.log()
+    // res.send("hello world")
+    res.sendFile(__dirname + "/index.html")
+})
+
+//socket
+
+io.on('connection', (socket)=>{
+    console.log("connected.....")
+
+    socket.on('message',(msg)=>{
+        // console.log(msg)
+        socket.broadcast.emit('message', msg)
+    })
 })
 
 
 
 
-server.listen(3000, ()=>{
-    console.log("surver is running")
+
+
+
+
+
+
+
+http.listen(PORT, ()=>{
+    console.log(`server listing on port ${PORT}`)
 })

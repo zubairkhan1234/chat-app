@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat App</title>
+  <script src="socket.io.js"></script>
+</head>
+
+<body onload="getTweets()">
+  <nav >
+    <form>
+      <h3 id="welcomeUser">
+
+      </h3>
+      
+    </form>
+  </nav>
+
+
+  <div class="container">
+    <div class="create__post">
+      <button onclick="logout()" id="lgBtn" type="button">LogOut</button>
+      <input id="userPost" placeholder="Type your message....." class="posts__input" maxlength="150">
+      <button class="post__button" onclick="post()">Post</button>
+    </div>
+
+    <div class="myCard">
+      <div>
+
+      </div>
+      <div class="posts__container">
+
+        <ul id="posts">
+
+        </ul>
+        <div id="myPost">
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <script src="app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SignUp</title>
+  <!-- <link rel="stylesheet" href="./style/style.css"> -->
+  <script src="socket.io.js"></script>
+
+</head>
+
+<body>
+
+  <div class="testbox">
+    <h2>SignUp Form</h2>
+
+    <form method="POST" onsubmit="return signup();">
+      <p>Name</p>
+      <input type="text" id="name" placeholder="Name" required />
+      <p>Email</p>
+      <input type="email" id="email" placeholder="Email" required />
+      <p>Password</p>
+      <input type="password" id="password" placeholder="Password" required />
+
+      <div class="gender">
+        <input type="radio" id="male" name="gender" checked />
+        <label for="male" class="radio" chec>Male</label>
+        <input type="radio" id="female" name="gender" />
+        <label for="female" class="radio">Female</label>
+      </div>
+      <a href="login.html">Login</a>
+      <button class="button">Signup</button>
+    </form>
+  </div>
+
+  <script src="app.js"></script>
+
+</body>
+
+</html>
